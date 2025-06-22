@@ -1,0 +1,9 @@
+./backend/configmap.yml
+./frontend/configmap.yml
+./backend/configmap.yaml
+./frontend/configmap.yaml
+
+./backend/secret.yml
+./frontend/secret.yml
+./backend/secret.yaml
+./frontend/secret.yaml

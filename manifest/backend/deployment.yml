@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: dumpstore-backend-deployment
+  labels:
+    app: dumpstore-backend-app
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: dumpstore-backend-app
+  template:
+    metadata:
+      labels:
+        app: dumpstore-backend-app
+    spec:
+      containers:
+        - name: dumpstore
+          image: manzilrahul/dumpstore-backend:0.0.1
+          envFrom:
+          - configMapRef:
+              name: dumpstore-backend-configmap
