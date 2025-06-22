@@ -4,3 +4,8 @@ pass.md
 *.idea
 config.env
 .DS_Store
+
+manifest/backend/configmap.yml
+manifest/backend/configmap.yaml
+manifest/frontend/configmap.yml
+manifest/frontend/configmap.yaml
