@@ -3,3 +3,4 @@ pass.md
 *.env
 *.idea
 config.env
+.DS_Store

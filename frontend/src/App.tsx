@@ -1,4 +1,8 @@
-import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 // import Home from "./components/Home";
 import { QueryClientProvider } from "@tanstack/react-query";
 import AllBookMark from "./components/AllBookMark";
@@ -34,6 +38,10 @@ function App() {
       element: <SignUp />,
     },
     {
+      path: "/create2",
+      element: <h1 style={{ color: "green" }}>✅ Hello from Create</h1>,
+    },
+    {
       path: "/create",
       element: (
         <UserProfileData>
@@ -55,7 +63,7 @@ function App() {
     },
     {
       path: "/home",
-      element: <LandingPage />
+      element: <LandingPage />,
     },
     {
       path: "*",

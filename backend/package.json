@@ -10,7 +10,6 @@
     "dev": "npx tsc && nodemon dist/server.js",
     "server":"tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/server.js\"",
     "vercel-build": "npm run build",
-    "postinstall": "tsc",
     "lint": "eslint ./src",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
