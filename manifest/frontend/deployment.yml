@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: dumpstore-frontend-deployment
+  labels:
+    app: dumpstore-frontend-app
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: dumpstore-frontend-app
+  template:
+    metadata:
+      labels:
+        app: dumpstore-frontend-app
+    spec:
+      containers:
+        - name: dumpstore-frontend-app
+          image: manzilrahul/dumpstore-frontend:0.0.1
