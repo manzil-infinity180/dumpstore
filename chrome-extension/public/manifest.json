@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+
+  "name": "dumpStore Bookmark Application",
+  "description": "Chrome Extension for bookmark your important links",
+  "version": "1.0",
+
+  "options_ui": {
+    "page": "options.html"
+  },
+
+  "action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+
+  "content_scripts": [
+      {
+          "matches": ["<all_urls>"],
+          "js": ["js/vendor.js", "js/content_script.js"]
+      }
+  ],
+
+  "background": {
+    "service_worker": "js/background.js"
+  },
+
+  "permissions": [
+    "storage",
+    "identity",
+    "activeTab",
+    "bookmarks"
+  ],
+
+  "host_permissions": [
+    "<all_urls>",
+    "http://localhost:3008/*"
+  ],
+  "oauth2": {
+    "client_id": "363304762195-jkof4hlsp5mfuaet3if1ee5585sgbruc.apps.googleusercontent.com",
+    "scopes":["https://www.googleapis.com/auth/contacts.readonly", "https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email"]
+    
+  }
+}

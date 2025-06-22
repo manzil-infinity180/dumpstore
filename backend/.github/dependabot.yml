@@ -1,0 +1,11 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/site"
+    schedule:
+      interval: "monthly"
+    labels:
+      - dependencies
+    commit-message:
+      prefix: "[Dependency] "
+      prefix-development: "[DevDependency]"

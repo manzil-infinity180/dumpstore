@@ -1,0 +1,30 @@
+version: '3.9'
+services:
+  server:
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    image: dumpstore-backend
+    container_name: dumpstore-backend-container
+    volumes:
+      - ./:/dumpstore
+    ports:
+      - "3008:3008"
+    env_file: ./.env
+    depends_on:
+      - mongodb
+    networks:
+      - dumpstore-newtorks
+  mongodb:
+    image: mongo:latest
+    volumes:
+      - mongodb:/data/db
+    networks:
+      - dumpstore-newtorks
+    ports:
+      - "27017:27017"
+volumes:
+  mongodb:
+
+networks:
+  dumpstore-newtorks:

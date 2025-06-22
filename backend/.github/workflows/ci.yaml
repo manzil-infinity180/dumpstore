@@ -1,0 +1,66 @@
+name: dumpstore-backend
+on:
+  push:
+  pull_request:
+env:
+  REGISTRY: ghcr.io
+  DOCKER_IMAGE_NAME: dumpstore-backend
+  DOCKERFILE_PATH: ./Dockerfile
+jobs:
+  server:
+    name: "Dumpstore Backend Server"
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: ./
+    permissions: write-all
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+      - name: Cache Node Modules
+        uses: actions/cache@v4
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install Dependencies
+        run: npm install
+      - name: ESLint
+        run: npm run lint
+      - name: Prettier
+        run: npm run format
+        env:
+          DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
+      
+
+  build:
+    name: "Build and Push to Docker Registry"
+    runs-on: ubuntu-22.04
+    needs: server  # Ensure the server job runs before this
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: ghcr.io
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ${{ env.DOCKERFILE_PATH }}
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/${{ env.DOCKER_IMAGE_NAME }}:${{ github.sha }}

@@ -1,0 +1,9 @@
+.env
+.env*
+build
+vercel.json
+tsconfig.json
+package.json
+package-lock.json
+Dockerfile
+compose.yaml
