@@ -1,4 +1,4 @@
-replicaCount: 1
+replicaCount: 2
 
 backend:
   image: manzilrahul/dumpstore-backend:0.0.1
