@@ -79,4 +79,41 @@ clean:
 	@echo "🧹 Cleaning dist folders..."
 	rm -rf backend/dist frontend/dist
 
-.PHONY: run-backend run-frontend build-backend build-frontend up down docker-build-backend docker-build-frontend docker-run-backend docker-run-frontend clean
+# --------------------
+# 🧹 Helm
+# --------------------
+
+helm-install:
+	@echo "------------------------------------------"
+	@echo "Running from the top level of the repo ..."
+	@echo "helm install ..."
+	helm install dumpstore ./helm/dumpstore -f ./helm/dumpstore/values.yaml
+
+helm-dry-run:
+	@echo "------------------------------------------"
+	@echo "Running from the top level of the repo ..."
+	@echo "helm upgrade --install --dry-run -debug"
+	@echo "------------------------------------------"
+	helm install dumpstore ./helm/dumpstore -f ./helm/dumpstore/values.yaml --dry-run --debug
+
+helm-upgrade:
+	@echo "------------------------------------------"
+	@echo "Running from the top level of the repo ..."
+	@echo "helm upgrade --install ..."
+	@echo "------------------------------------------"
+	helm upgrade --install dumpstore ./helm/dumpstore -f ./helm/dumpstore/values.yaml
+
+helm-template:
+	@echo "------------------------------------------"
+	@echo "Running from the top level of the repo ..."
+	@echo "helm template..."
+	@echo "------------------------------------------"
+	helm template dumpstore ./helm/dumpstore -f ./helm/dumpstore/values.yaml
+
+helm-list:
+	helm list
+
+helm-uninstall:
+	helm uninstall dumpstore
+
+.PHONY: run-backend run-frontend build-backend build-frontend up down docker-build-backend docker-build-frontend docker-run-backend docker-run-frontend clean helm-upgrade helm-list helm-install helm-template helm-dry-run 

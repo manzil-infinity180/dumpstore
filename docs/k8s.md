@@ -1,27 +1,42 @@
+```rs
+$ cd dumpstore
+$ helm create demochart
+
+> remove all the deployment/serviceaccount from the template folder 
+
+helm/dumpstore
+├── Chart.yaml
+├── charts
+├── templates
+│   ├── deployment-backend.yaml
+│   ├── deployment-frontend.yaml
+│   ├── service-backend.yaml
+│   └── service-frontend.yaml
+└── values.yaml
+
+Update the values.yaml > so they can support different top-level key (like backend and frontend)
+
+> After this please update your 
+── templates
+│   ├── deployment-backend.yaml
+│   ├── deployment-frontend.yaml
+│   ├── service-backend.yaml
+│   └── service-frontend.yaml
+
 ```
-> First please create the manifest file for your both backend and frontend 
+> After doing this all stuff / updating the templates 
 
-Fill the values - example.configmap.yml to configmap.yml
-.
-├── backend
-│   ├── configmap.yml
-│   ├── deployment.yml
-│   ├── example.configmap.yml
-│   ├── ingress.yml
-│   └── service.yml
-└── frontend
-    ├── configmap.yml
-    ├── deployment.yml
-    ├── ingress.yml
-    └── service.yml
+> | Note you need to create the configmap (which takes all the `cred` for backend to run, without this you cannot run the backend application ) - look [example.configmap.yml](https://github.com/manzil-infinity180/dumpstore/blob/main/manifest/backend/example.configmap.yml)
 
-kubectl port-forward services/dumpstore-frontend-service 5173:5173
-kubectl port-forward services/dumpstore-backend-service 3008:3008
+```rs
+if you are at top level 
 
-
+rahulxf@Rahuls-MacBook-Air-3 Dumpstore % helm upgrade --install dumpstore ./helm/dumpstore -f ./helm/dumpstore/values.yaml
 ```
 
-```
+
+
+```rs
 rahulxf@Rahuls-MacBook-Air-3 Dumpstore % kubectl get deployments.apps 
 NAME                 READY   UP-TO-DATE   AVAILABLE   AGE
 dumpstore-backend    1/1     1            1           3m47s
@@ -41,4 +56,9 @@ dumpstore-backend-sa   0         4m7s
 rahulxf@Rahuls-MacBook-Air-3 Dumpstore % kubectl port-forward svc/dumpstore-backend 3008:3008
 Forwarding from 127.0.0.1:3008 -> 3008
 Forwarding from [::1]:3008 -> 3008
+
+rahulxf@Rahuls-MacBook-Air-3 Dumpstore %  kubectl port-forward svc/dumpstore-frontend 5173:5173
+Forwarding from 127.0.0.1:5173 -> 5173
+Forwarding from [::1]:5173 -> 5173
+Handling connection for 5173
 ```
