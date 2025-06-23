@@ -1,0 +1,9 @@
+replicaCount: 1
+
+backend:
+  image: manzilrahul/dumpstore-backend:0.0.1
+  port: 3008
+
+frontend:
+  image: manzilrahul/dumpstore-frontend:0.0.1
+  port: 5173
