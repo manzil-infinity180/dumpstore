@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: dumpstore-frontend
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector: 
+    matchLabels:
+      app: dumpstore-frontend-app
+  template:
+    metadata:
+      labels:
+        app: dumpstore-frontend-app
+    spec:
+      containers:
+        - name: dumpstore-frontend
+          image: {{ .Values.frontend.image }}
+          ports:
+            - containerPort: {{ .Values.frontend.port }}
