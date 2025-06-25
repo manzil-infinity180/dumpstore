@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dumpstore-frontend
+spec:
+  rules:
+  - host: dumpstore.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: dumpstore-frontend
+            port:
+              number: 5173
