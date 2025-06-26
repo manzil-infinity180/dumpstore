@@ -2,6 +2,7 @@ name: releaser
 
 on:
   pull_request:
+  workflow_dispatch:
   # Uncomment below for release tagging later
   # push:
   #   tags:
