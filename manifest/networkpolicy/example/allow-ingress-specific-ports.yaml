@@ -1,0 +1,17 @@
+# Example 5: Allow Ingress Traffic on Specific Ports
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-ingress-specific-ports
+spec:
+  podSelector:
+    matchLabels: 
+      app: web-app # podSelector: Selects pods labeled app: web-app.
+  policyTypes:
+  - Ingress
+  ingress:
+  - ports: # ingress: Allows incoming traffic on ports 80 (HTTP) and 443 (HTTPS).
+    - protocol: TCP
+      port: 80
+    - protocol: TCP
+      port: 443

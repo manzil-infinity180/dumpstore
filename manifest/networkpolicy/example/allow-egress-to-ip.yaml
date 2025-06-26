@@ -1,0 +1,16 @@
+# Example 4: Allow Egress to a Specific IP Range
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-egress-to-ip
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: my-app
+  policyTypes: 
+  - Egress
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 192.168.1.0/24  # egress: Allows outgoing traffic to the IP range 192.168.1.0/24.

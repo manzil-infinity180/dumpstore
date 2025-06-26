@@ -1,0 +1,16 @@
+# Example 3: Allow Ingress from a Specific Namespace
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-namespace-ingress
+spec:
+  podSelector:
+    matchLabels:
+      app: my-app # podSelector: Selects pods labeled app: my-app.
+  policyTypes:
+  - Ingress # policyTypes: Specifies that this policy controls ingress traffic.
+  ingress:
+  - from:
+    - namespaceSelector: 
+        matchLabels: # ingress: Allows incoming traffic from pods in the namespace labeled project: my-namespace
+          project: my-namespace

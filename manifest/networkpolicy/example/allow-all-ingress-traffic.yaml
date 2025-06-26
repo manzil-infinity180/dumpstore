@@ -1,0 +1,10 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-all-ingress
+spec:
+  podSelector: {} # podSelector: An empty selector means this policy applies to all pods in the namespace.
+  policyTypes: # policyTypes: Specifies that this policy controls ingress traffic.
+    - Ingress
+  ingress:
+  - {} # ingress: An empty ingress rule allows all incoming traffic.
