@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: web-allow-all-ns-monitoring
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: dumpstore-backend-app
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels: # chooses all pods in namespaces labelled with team=rahulxf
+              team: rahulxf
+          podSelector: # chooses pods with type=monitoring
+           matchLabels:
+            type: monitoring
