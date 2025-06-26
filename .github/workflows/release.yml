@@ -2,11 +2,6 @@ name: releaser
 
 on:
   pull_request:
-  workflow_dispatch:
-  # Uncomment below for release tagging later
-  # push:
-  #   tags:
-  #     - v*
 
 permissions:
   contents: read
@@ -14,9 +9,6 @@ permissions:
 
 env:
   REGISTRY: ghcr.io
-  DOCKERFILE_PATHS:
-    backend: ./backend/Dockerfile
-    frontend: ./frontend/Dockerfile
 
 jobs:
   build-push:
