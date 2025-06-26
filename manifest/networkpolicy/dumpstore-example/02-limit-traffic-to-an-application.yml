@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: api-allow-pod-with-specific-labels
+spec:
+  podSelector:
+    matchLabels:
+      app: dumpstore-backend-app
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: dumpstore-frontend-app
