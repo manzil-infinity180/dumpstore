@@ -48,7 +48,7 @@ jobs:
           linting: off
           charts_dir: helm
 
-    #   - name: Publish to ArtifactHub
-    #     run: |
-    #       curl -sSfL https://github.com/artifacthub/hub/releases/latest/download/ah_$(uname -s)_$(uname -m).tar.gz | tar -xz -C /usr/local/bin ah
-    #       ah lint && ah publish
+      - name: Publish to ArtifactHub
+        run: |
+          curl -sSfL https://github.com/artifacthub/hub/releases/latest/download/ah_$(uname -s)_$(uname -m).tar.gz | tar -xz -C /usr/local/bin ah
+          ah lint && ah publish
