@@ -50,5 +50,5 @@ jobs:
 
       - name: Publish to ArtifactHub
         run: |
-          curl -sSfL https://github.com/artifacthub/hub/releases/latest/download/ah_$(uname -s)_$(uname -m).tar.gz | tar -xz -C /usr/local/bin ah
+          curl -sSfL https://github.com/artifacthub/hub/releases/download/v1.12.0/ah_Linux_x86_64.tar.gz | tar -xz -C /usr/local/bin ah
           ah lint && ah publish
