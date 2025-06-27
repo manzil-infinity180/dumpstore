@@ -3,12 +3,12 @@ entries:
   dumpstore:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-06-27T08:07:28.684471916Z"
+    created: "2025-06-27T08:40:25.806928054Z"
     description: A Helm chart for Kubernetes
-    digest: b128b7aa784ec48615602db1837133bd5a32abcba9c7f63727ffbcbebf699206
+    digest: f19162e50748be63ca3dbbfaf1f5a35d391db1e12c5c1ee4b11cd11bea4d56f3
     name: dumpstore
     type: application
     urls:
     - https://manzil-infinity180.github.io/dumpstore/dumpstore-0.1.0.tgz
     version: 0.1.0
-generated: "2025-06-27T08:07:28.68412685Z"
+generated: "2025-06-27T08:40:25.806172707Z"
