@@ -1,9 +1,9 @@
 replicaCount: 1
 
 backend:
-  image: ghcr.io/manzil-infinity180/backend-dumpstore:1b96af1c858716ce2fad956b4e73088e1445d749
+  image: ghcr.io/manzil-infinity180/backend-dumpstore:226f28ca3efa6d3691044813cd09085e28d4a7b4
   port: 3008
 
 frontend:
-  image: ghcr.io/manzil-infinity180/frontend-dumpstore:1b96af1c858716ce2fad956b4e73088e1445d749
+  image: ghcr.io/manzil-infinity180/frontend-dumpstore:226f28ca3efa6d3691044813cd09085e28d4a7b4
   port: 5173
